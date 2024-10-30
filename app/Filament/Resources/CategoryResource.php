@@ -13,6 +13,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
@@ -31,11 +33,7 @@ class CategoryResource extends Resource
                     ->searchable()
                     ->preload(),
 
-                // SpatieMediaLibraryFileUpload::make('image')
-                //     ->collection('images')
-                //     ->label('Category Image')
-                //     ->image()
-                //     ->maxFiles(1),
+                SpatieMediaLibraryFileUpload::make('image')->label('Category Image'),
             ]);
     }
 
@@ -44,6 +42,7 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
+                SpatieMediaLibraryImageColumn::make('image'), // You can label it
             ])
             ->filters([
                 //
