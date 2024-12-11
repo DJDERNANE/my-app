@@ -1,24 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Contact;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\CategoryResource;
-class CategoryController extends Controller
+
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cats = Category::with(['parent', 'children', 'media'])->get();
-        if ($cats) {
-            return CategoryResource::collection($cats);
-        }else{
-            return response()->json(['message' => 'No categories found'], 404);
-        }
+        //
     }
 
     /**
@@ -34,13 +28,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+        Contact::create($request->all());
+
+        return response()->json(['message' => 'Contact created successfully']);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Contact $contact)
     {
         //
     }
@@ -48,7 +51,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Contact $contact)
     {
         //
     }
@@ -56,7 +59,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
@@ -64,7 +67,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Contact $contact)
     {
         //
     }

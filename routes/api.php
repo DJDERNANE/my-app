@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InscriptionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/categories', CategoryController::class);
+Route::post('/contacts', [ContactController::class, 'store']);
+
+Route::post('/inscriptions', [InscriptionController::class, 'store']);
