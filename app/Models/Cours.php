@@ -19,7 +19,8 @@ class Cours extends Model implements HasMedia
         'icon',
         'price',
         'main_page_title',
-        'main_page_description'
+        'main_page_description',
+        'cours_id',
     ];
 
     public function registerMediaCollections(): void
@@ -36,5 +37,10 @@ class Cours extends Model implements HasMedia
     public function coursSections()
     {
         return $this->hasMany(CoursSection::class);
+    }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
     }
 }

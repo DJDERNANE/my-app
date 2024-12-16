@@ -22,4 +22,9 @@ class Inscription extends Model
         'status',
         'level',
     ];
+
+    public function cours()
+    {
+        return $this->belongsTo(Cours::class);
+    }
 }
