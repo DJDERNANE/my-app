@@ -21,8 +21,10 @@ class CoursSectionsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('description')
-                    ->required(),
+                    Forms\Components\Textarea::make('description')
+                    ->required()
+                    ->rows(5) // Adjust the number of rows for the textarea
+                    ->placeholder('Enter description here...') // Optional placeholder
             ]);
     }
 

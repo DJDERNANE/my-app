@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\CoursController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/contacts', [ContactController::class, 'store']);
 
 Route::post('/inscriptions', [InscriptionController::class, 'store']);
+
+Route::get('/cours', [CoursController::class, 'index']);
+Route::get('/cours/{cours}', [CoursController::class, 'show']);

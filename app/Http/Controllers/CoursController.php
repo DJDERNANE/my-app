@@ -12,7 +12,16 @@ class CoursController extends Controller
      */
     public function index()
     {
-        //
+        $cours = Cours::with('media')->get();
+        $coursData = $cours->map(function ($course) {
+            return [
+                'id' => $course->id,
+                'title' => $course->title,
+                'description' => $course->description,
+                'icon' => $course->getFirstMediaUrl('icon'), // Retrieve the URL of the first image in the 'icon' collection
+            ];
+        });
+        return response()->json(['success' => true, 'date' => $coursData]);
     }
 
     /**
@@ -36,7 +45,17 @@ class CoursController extends Controller
      */
     public function show(Cours $cours)
     {
-        //
+        $cours = Cours::where('id', $cours->id)->with('media', 'coursSections')->get();
+        $coursData = $cours->map(function ($course) {
+            return [
+                'id' => $course->id,
+                'title' => $course->main_page_title,
+                'description' => $course->main_page_description,
+                'sections' => $course->coursSections,
+                'bg' => $course->getFirstMediaUrl('bg'), // Retrieve the URL of the first image in the 'icon' collection
+            ];
+        });
+        return response()->json(['success' => true, 'date' => $coursData]);
     }
 
     /**
