@@ -24,5 +24,5 @@ Route::post('/contacts', [ContactController::class, 'store']);
 
 Route::post('/inscriptions', [InscriptionController::class, 'store']);
 
-Route::get('/cours', [CoursController::class, 'index']);
-Route::get('/cours/{cours}', [CoursController::class, 'show']);
+// Route::get('/cours', [CoursController::class, 'index']);
+// Route::get('/cours/{cours}', [CoursController::class, 'show']);

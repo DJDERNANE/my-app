@@ -31,7 +31,6 @@ class InscriptionController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'family_name' => 'required',
             'phone' => 'required',
         ]);
 
