@@ -21,7 +21,7 @@ class CoursController extends Controller
                 'icon' => $course->getFirstMediaUrl('icon'), // Retrieve the URL of the first image in the 'icon' collection
             ];
         });
-        return response()->json(['success' => true, 'date' => $coursData]);
+        return response()->json(['success' => true, 'data' => $coursData]);
     }
 
     /**
