@@ -36,7 +36,7 @@ class InscriptionController extends Controller
 
         Inscription::create($request->all());
 
-        return response()->json(['message' => 'Inscription created successfully']);
+        return response()->json(['message' => 'Inscription ezfezf created successfully']);
 
     }
 
