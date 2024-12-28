@@ -24,53 +24,65 @@ class InscriptionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
-                Forms\Components\TextInput::make('family_name'),
-                Forms\Components\TextInput::make('email'),
-                Forms\Components\TextInput::make('phone'),
-                Forms\Components\TextInput::make('contry'),
-                Forms\Components\TextInput::make('city'),
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+
+                Forms\Components\TextInput::make('family_name')
+                    ->required(),
+
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->required(),
+
+                Forms\Components\TextInput::make('phone')
+                    ->required(),
+
+                Forms\Components\TextInput::make('city')
+                    ->required(),
+
                 Forms\Components\Select::make('age_group')
-                ->options([
-                    'under_18' => 'under 18',
-                    'children' => '18-24',
-                    'young_adult' => '25-34',
-                    'adult' => '35-44',
-                    'older' => 'older than 45',
+                    ->options([
+                        'under_18' => 'under 18',
+                        '18-24' => '18-24',
+                        '25-34' => '25-34',
+                        '35-44' => '35-44',
+                        '45+' => '45+',
                     ]),
 
                 Forms\Components\Select::make('level')
-                ->options([
-                    'beginner' => 'Beginner',
-                    'intermediate' => 'Intermediate',
-                    'advanced' => 'Advanced',
-                    'idontknow' => 'I don\'t know',
+                    ->options([
+                        'Beginner' => 'Beginner',
+                        'Intermediate' => 'Intermediate',
+                        'Advanced' => 'Advanced',
+                        'idontknow' => 'idontknow',
                     ]),
 
                 Forms\Components\Select::make('status')
-                ->options([
-                    'student' => 'Student',
-                    'employed' => 'Employed',
-                    'unemployed' => 'Unemployed',
-                    'self-employed' => 'Self-employed',
-                    'freelancer' => 'Freelancer',
-                    'other' => 'Other',
+                    ->options([
+                        'Student' => 'Student',
+                        'Employed' => 'Employed',
+                        'Unemployed' => 'Unemployed',
+                        'self-employed' => 'Self-employed',
+                        'Free-lancer' => 'Freelancer',
+                        'Other' => 'Other',
                     ]),
-                
-               
-                Textarea::make('message'),
-                Forms\Components\CheckboxList::make('availability')
-                ->options([
-                    'weekdays_morning' => 'Weekdays (morning)',
-                    'weekdays_afternoon' => 'Weekdays (afternoon)',
-                    'weekends_morning' => 'Weekends (morning)', 
-                    'weekends_afternoon' => 'Weekends (afternoon)', 
 
-                ]) ->afterStateUpdated(fn ($state, $set) => $set('availability', json_encode($state)))
-                ->required(),
+                Textarea::make('message'),
+
+                Forms\Components\CheckboxList::make('availability')
+                    ->options([
+                        'weekdays_morning' => 'Weekdays (morning)',
+                        'weekdays_afternoon' => 'Weekdays (afternoon)',
+                        'weekends_morning' => 'Weekends (morning)',
+                        'weekends_afternoon' => 'Weekends (afternoon)',
+                    ])
+                    ->afterStateHydrated(function ($state, $set, $record) {
+                        $set('availability', $record ? json_decode($record->availability, true) : []);
+                    })
+                    ->afterStateUpdated(fn ($state, $set) => $set('availability', json_encode($state)))
+                    ->required(),
             ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
