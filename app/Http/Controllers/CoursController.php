@@ -50,6 +50,7 @@ class CoursController extends Controller
             return [
                 'id' => $course->id,
                 'title' => $course->main_page_title,
+                'price' => $course->price,
                 'description' => $course->main_page_description,
                 'sections' => $course->coursSections,
                 'bg' => $course->getFirstMediaUrl('bg'), // Retrieve the URL of the first image in the 'icon' collection

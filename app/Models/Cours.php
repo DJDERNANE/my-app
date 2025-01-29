@@ -20,7 +20,8 @@ class Cours extends Model implements HasMedia
         'price',
         'main_page_title',
         'main_page_description',
-        'cours_id',
+        'discount',
+        'new_price'
     ];
 
     public function registerMediaCollections(): void

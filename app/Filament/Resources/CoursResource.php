@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+
 class CoursResource extends Resource
 {
     protected static ?string $model = Cours::class;
@@ -29,10 +30,23 @@ class CoursResource extends Resource
                 Forms\Components\TextInput::make('price')->required(),
                 Forms\Components\TextInput::make('main_page_title')->required(),
                 Forms\Components\TextInput::make('main_page_description')->required(),
-                SpatieMediaLibraryFileUpload::make('icon')
+                
+                // Add a toggle for discount
+                Forms\Components\Toggle::make('discount')
+                    ->label('Has Discount')
+                    ->reactive(), // This makes the field reactive so it can trigger changes in other fields
+
+                // Conditionally display the new price field if discount is true
+                Forms\Components\TextInput::make('new_price')
+                    ->label('New Price')
+                    ->required()
+                    
+                    ->visible(fn($get) => $get('discount')),
+
+                    SpatieMediaLibraryFileUpload::make('icon')
                     ->collection('icon'),
                 SpatieMediaLibraryFileUpload::make('bg')
-                    ->collection('bg')
+                    ->collection('bg'),
             ]);
     }
 
