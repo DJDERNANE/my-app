@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SolutionDetailResource\Pages;
+use App\Filament\Resources\SolutionDetailResource\RelationManagers;
 use App\Models\SolutionDetail;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -73,7 +74,7 @@ class SolutionDetailResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\SectionsRelationManager::class,
         ];
     }
 
