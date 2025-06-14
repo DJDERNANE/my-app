@@ -20,4 +20,9 @@ class Solution extends Model
     {
         return $this->belongsTo(submenuItem::class, 'submenu_item_id');
     }
+
+    public function detail()
+    {
+        return $this->hasOne(SolutionDetail::class);
+    }
 }
