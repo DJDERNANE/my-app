@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SubmenuItemResource extends Resource
 {
-    protected static ?string $model = SubmenuItem::class;
+    protected static ?string $model = submenuItem::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
