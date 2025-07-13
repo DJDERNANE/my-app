@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CoursController;
+use App\Http\Controllers\SubmenuItemController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +27,5 @@ Route::post('/inscriptions', [InscriptionController::class, 'store']);
 
 Route::get('/cours', [CoursController::class, 'index']);
 Route::get('/cours/{cours}', [CoursController::class, 'show']);
+
+Route::get('/submenu-items', [SubmenuItemController::class, 'index']);

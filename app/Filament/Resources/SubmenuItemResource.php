@@ -44,6 +44,9 @@ class SubmenuItemResource extends Resource
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('link')
+                    ->label('Link')
+                    ->maxLength(255),
             ]);
     }
 
@@ -58,6 +61,9 @@ class SubmenuItemResource extends Resource
                 Tables\Columns\ImageColumn::make('picture')
                     ->square(),
                 Tables\Columns\TextColumn::make('description')
+                    ->limit(50)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('link')
                     ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

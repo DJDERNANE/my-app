@@ -12,7 +12,8 @@ class submenuItem extends Model
         'title', 
         'icon',
         'picture',
-        'description'
+        'description',
+        'link'
     ];
 
     public function solutions()
