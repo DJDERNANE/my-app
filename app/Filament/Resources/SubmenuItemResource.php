@@ -47,6 +47,12 @@ class SubmenuItemResource extends Resource
                 Forms\Components\TextInput::make('link')
                     ->label('Link')
                     ->maxLength(255),
+                Forms\Components\Select::make('parent')
+                    ->label('Parent')
+                    ->options([
+                        'solutions' => 'Solutions',
+                    ])
+                    ->placeholder('Select a parent'),
             ]);
     }
 
@@ -65,6 +71,8 @@ class SubmenuItemResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('link')
                     ->limit(50)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('parent')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
