@@ -20,7 +20,7 @@ class Page extends Model implements HasMedia
 
     public function submenuItem()
     {
-        return $this->belongsTo(SubmenuItem::class, 'submenu_id');
+        return $this->belongsTo(submenuItem::class, 'submenu_id');
     }
 
     public function registerMediaCollections(): void
