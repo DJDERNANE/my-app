@@ -18,7 +18,7 @@ class Solution extends Model
 
     public function submenuItem()
     {
-        return $this->belongsTo(SubmenuItem::class, 'submenu_item_id');
+        return $this->belongsTo(submenuItem::class, 'submenu_item_id');
     }
 
     public function detail()
