@@ -1,0 +1,29 @@
+name:  Deploy To CPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.PORT}}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd domains/brainexpanel.com/public_html/
+            git pull origin main
+            php artisan migrate
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
