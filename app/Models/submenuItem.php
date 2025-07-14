@@ -21,4 +21,9 @@ class submenuItem extends Model
     {
         return $this->hasMany(Solution::class);
     }
+
+    public function pages()
+    {
+        return $this->hasMany(page::class, 'submenu_id');
+    }
 }
