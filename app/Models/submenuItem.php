@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class submenuItem extends Model
+class SubmenuItem extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -22,8 +22,8 @@ class submenuItem extends Model
         return $this->hasMany(Solution::class);
     }
 
-    public function pages()
+    public function page()
     {
-        return $this->hasMany(page::class, 'submenu_id');
+        return $this->hasOne(Page::class, 'submenu_id');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\submenuItem;
+use App\Models\SubmenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -13,7 +13,7 @@ class SubmenuItemController extends Controller
      */
     public function index(): JsonResponse
     {
-        $submenuItems = submenuItem::all();
+        $submenuItems = SubmenuItem::all();
         
         return response()->json([
             'success' => true,

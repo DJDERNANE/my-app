@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubmenuItemResource\Pages;
 use App\Filament\Resources\SubmenuItemResource\RelationManagers;
-use App\Models\submenuItem;
+use App\Models\SubmenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SubmenuItemResource extends Resource
 {
-    protected static ?string $model = submenuItem::class;
+    protected static ?string $model = SubmenuItem::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -87,6 +87,7 @@ class SubmenuItemResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -100,7 +101,7 @@ class SubmenuItemResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PageRelationManager::class,
         ];
     }
 
@@ -109,6 +110,7 @@ class SubmenuItemResource extends Resource
         return [
             'index' => Pages\ListSubmenuItems::route('/'),
             'create' => Pages\CreateSubmenuItem::route('/create'),
+            'view' => Pages\ViewSubmenuItem::route('/{record}'),
             'edit' => Pages\EditSubmenuItem::route('/{record}/edit'),
         ];
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\SubmenuItemController;
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +30,7 @@ Route::get('/cours', [CoursController::class, 'index']);
 Route::get('/cours/{cours}', [CoursController::class, 'show']);
 
 Route::get('/submenu-items', [SubmenuItemController::class, 'index']);
+
+Route::get('/pages', [PageController::class, 'index']);
+Route::get('/pages/{page}', [PageController::class, 'show']);
+Route::get('/pages/submenu/{submenuId}', [PageController::class, 'getBySubmenu']); // Get single page by submenu
