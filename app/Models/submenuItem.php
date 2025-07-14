@@ -24,6 +24,6 @@ class SubmenuItem extends Model
 
     public function page()
     {
-        return $this->hasOne(Page::class, 'submenu_id');
+        return $this->hasOne(page::class, 'submenu_id');
     }
 }
