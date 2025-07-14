@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubmenuItemResource\Pages;
 use App\Filament\Resources\SubmenuItemResource\RelationManagers;
-use App\Models\SubmenuItem;
+use App\Models\submenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SubmenuItemResource extends Resource
 {
-    protected static ?string $model = SubmenuItem::class;
+    protected static ?string $model = submenuItem::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

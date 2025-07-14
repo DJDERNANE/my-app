@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
 use App\Models\Page;
-use App\Models\SubmenuItem;
+use App\Models\submenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -66,7 +66,7 @@ class PageResource extends Resource
                 
                 Select::make('submenu_id')
                     ->label('Submenu Item')
-                    ->options(SubmenuItem::all()->pluck('title', 'id'))                  
+                    ->options(submenuItem::all()->pluck('title', 'id'))                  
                     ->required()
                     ->relationship('submenuItem', 'title')
                     ->helperText('Select the submenu item this page belongs to.'),
@@ -116,7 +116,7 @@ class PageResource extends Resource
             ->filters([
                 SelectFilter::make('submenu_id')
                     ->label('Filter by Submenu')
-                    ->options(SubmenuItem::all()->pluck('title', 'id'))
+                    ->options(submenuItem::all()->pluck('title', 'id'))
                     ->relationship('submenuItem', 'title'),
                 Tables\Filters\Filter::make('has_image')
                     ->label('Has Image')
