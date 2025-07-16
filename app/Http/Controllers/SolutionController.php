@@ -15,7 +15,7 @@ class SolutionController extends Controller
 
     public function getSolutionWithDetails($solutionId)
     {
-        $solution = Solution::with(['datil','detail.sections'])->find($solutionId);
+        $solution = Solution::with(['detail.sections'])->find($solutionId);
         
         if (!$solution) {
             return response()->json(['message' => 'Solution not found'], 404);
