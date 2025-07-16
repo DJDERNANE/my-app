@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\page;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -13,7 +13,7 @@ class PageController extends Controller
      */
     public function index(): JsonResponse
     {
-        $pages = page::with('submenuItem')->get();
+        $pages = Page::with('submenuItem')->get();
         
         return response()->json([
             'success' => true,
@@ -39,7 +39,7 @@ class PageController extends Controller
      */
     public function getBySubmenu($submenuId): JsonResponse
     {
-        $page = page::where('submenu_id', $submenuId)
+        $page = Page::where('submenu_id', $submenuId)
             ->with('submenuItem')
             ->first();
         

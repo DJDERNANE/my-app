@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
-use App\Models\page;
+use App\Models\Page;
 use App\Models\submenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -23,7 +23,7 @@ use Filament\Tables\Filters\SelectFilter;
 
 class PageResource extends Resource
 {
-    protected static ?string $model = page::class;
+    protected static ?string $model = Page::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
