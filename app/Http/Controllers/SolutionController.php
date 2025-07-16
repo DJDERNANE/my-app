@@ -12,4 +12,18 @@ class SolutionController extends Controller
         $solutions = Solution::where('submenu_item_id', $submenuId)->get();
         return response()->json($solutions);
     }
+
+    public function getSolutionWithDetails($solutionId)
+    {
+        $solution = Solution::with(['detail.sections'])->find($solutionId);
+        
+        if (!$solution) {
+            return response()->json(['message' => 'Solution not found'], 404);
+        }
+        
+        return response()->json([
+            'success' => true,
+            'data' => $solution
+        ]);
+    }
 }

@@ -36,3 +36,4 @@ Route::get('/pages', [PageController::class, 'index']);
 Route::get('/pages/{page}', [PageController::class, 'show']);
 Route::get('/pages/submenu/{submenuId}', [PageController::class, 'getBySubmenu']); // Get single page by submenu
 Route::get('/solutions/submenu/{submenuId}', [SolutionController::class, 'getBySubmenu']); // Get single page by submenu
+Route::get('/solutions/{solutionId}/details', [SolutionController::class, 'getSolutionWithDetails']); // Get solution with details and sections
