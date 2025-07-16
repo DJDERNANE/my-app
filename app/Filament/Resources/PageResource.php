@@ -23,7 +23,7 @@ use Filament\Tables\Filters\SelectFilter;
 
 class PageResource extends Resource
 {
-    protected static ?string $model = Page::class;
+    protected static ?string $model = page::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 

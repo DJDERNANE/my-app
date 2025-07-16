@@ -13,7 +13,7 @@ class PageController extends Controller
      */
     public function index(): JsonResponse
     {
-        $pages = Page::with('submenuItem')->get();
+        $pages = page::with('submenuItem')->get();
         
         return response()->json([
             'success' => true,
@@ -39,7 +39,7 @@ class PageController extends Controller
      */
     public function getBySubmenu($submenuId): JsonResponse
     {
-        $page = Page::where('submenu_id', $submenuId)
+        $page = page::where('submenu_id', $submenuId)
             ->with('submenuItem')
             ->first();
         
