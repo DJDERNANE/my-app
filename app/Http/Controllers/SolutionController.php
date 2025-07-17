@@ -9,7 +9,7 @@ class SolutionController extends Controller
 {
     public function getBySubmenu($submenuId)
     {
-        $solutions = Solution::where('submenu_item_id', $submenuId)->get();
+        $solutions = Solution::where('submenu_item_id', $submenuId)->with(['detail.sections'])->get();
         return response()->json($solutions);
     }
 
