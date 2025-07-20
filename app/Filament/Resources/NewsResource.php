@@ -29,7 +29,7 @@ class NewsResource extends Resource
                 Forms\Components\TextInput::make('title')->required(),
                 Forms\Components\TextInput::make('description')->required(),
                 Forms\Components\DatePicker::make('date')->required(),
-                Forms\Components\TextInput::make('position')->required(),
+                Forms\Components\TextInput::make('position')->required()->label("Location"),
                 Forms\Components\Select::make('category')->required()
                     ->options([
                         'latest' => 'latest',
@@ -48,7 +48,7 @@ class NewsResource extends Resource
             Tables\Columns\TextColumn::make('title'),
             Tables\Columns\TextColumn::make('description')->limit(50),
             Tables\Columns\TextColumn::make('date'),
-            Tables\Columns\TextColumn::make('position'),
+            Tables\Columns\TextColumn::make('position')->label("location"),
 
             Tables\Columns\TextColumn::make('category'),
             SpatieMediaLibraryImageColumn::make('picture')->collection('picture')
