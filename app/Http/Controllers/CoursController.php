@@ -54,6 +54,8 @@ class CoursController extends Controller
                 'description' => $course->main_page_description,
                 'sections' => $course->coursSections,
                 'bg' => $course->getFirstMediaUrl('bg'), // Retrieve the URL of the first image in the 'icon' collection
+                'discount' => $course->discount,
+                'new_price' => $course->new_price
             ];
         });
         return response()->json(['success' => true, 'date' => $coursData]);
